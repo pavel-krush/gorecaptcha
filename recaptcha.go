@@ -69,6 +69,8 @@ func (r Recaptcha) VerifyContext(ctx context.Context, ip string, token string) (
 		return ret, err
 	}
 
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+
 	resp, err := r.httpClient.Do(req)
 	if err != nil {
 		return ret, err
